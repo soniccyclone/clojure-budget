@@ -3,6 +3,7 @@ CREATE FUNCTION transaction_insert() RETURNS trigger AS $transaction_insert$
         UPDATE budget_value
         SET budget_value.value = budget_value.value + NEW.value
         WHERE budget_value.id = NEW.budget_id;
+        RETURN NULL;
     END;
 $transaction_insert$ LANGUAGE plpgsql;
 

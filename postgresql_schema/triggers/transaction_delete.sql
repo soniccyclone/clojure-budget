@@ -3,6 +3,7 @@ CREATE FUNCTION transaction_delete() RETURNS trigger AS $transaction_delete$
         UPDATE budget_value
         SET budget_value.value = budget_value.value - OLD.value
         WHERE budget_value.id = OLD.budget_id;
+        RETURN NULL;
     END;
 $transaction_delete$ LANGUAGE plpgsql;
 
