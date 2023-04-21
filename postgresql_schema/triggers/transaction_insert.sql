@@ -6,5 +6,5 @@ CREATE FUNCTION transaction_insert() RETURNS trigger AS $transaction_insert$
     END;
 $transaction_insert$ LANGUAGE plpgsql;
 
-CREATE TRIGGER transaction_insert AFTER INSERT ON [transaction]
+CREATE TRIGGER transaction_insert AFTER INSERT ON transaction
     FOR EACH ROW EXECUTE FUNCTION transaction_insert();
