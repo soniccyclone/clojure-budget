@@ -4,9 +4,14 @@
 
 CREATE TABLE IF NOT EXISTS public.budget_value
 (
-    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+    budget_id bigint NOT NULL,
     value money,
-    CONSTRAINT budget_value_pkey PRIMARY KEY (id)
+    CONSTRAINT budget_value_pkey PRIMARY KEY (budget_id),
+    CONSTRAINT fk_budget_id FOREIGN KEY (budget_id)
+        REFERENCES public.budget (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
+        NOT VALID
 )
 
 TABLESPACE pg_default;
