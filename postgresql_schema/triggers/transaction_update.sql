@@ -5,5 +5,5 @@ CREATE FUNCTION transaction_update() RETURNS trigger AS $transaction_update$
     END;
 $transaction_update$ LANGUAGE plpgsql;
 
-CREATE TRIGGER transaction_update AFTER INSERT ON transaction
+CREATE TRIGGER transaction_update AFTER UPDATE ON transaction
     FOR EACH ROW EXECUTE FUNCTION transaction_update();
